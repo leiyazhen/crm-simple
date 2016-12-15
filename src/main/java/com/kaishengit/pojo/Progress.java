@@ -1,15 +1,19 @@
 package com.kaishengit.pojo;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.io.Serializable;
-import java.util.List;
-
 public class Progress implements Serializable {
 
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
     private String progress;
     private String mark;
     private String createtime;

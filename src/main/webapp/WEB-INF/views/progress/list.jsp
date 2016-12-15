@@ -114,7 +114,7 @@
                                         </c:choose>
 
                                         <div class="panel-heading">
-                                            <i class="fa fa-calendar"></i> ${pro.monthAndDay} - <span class="text-muted">${pro.user.username}</span> - ${pro.customer.custname}
+                                            <i class="fa fa-calendar"></i> ${pro.monthAndDay} - <span class="text-muted">${pro.user.username}</span> - ${pro.customer.contact}
                                             <c:choose>
                                                 <c:when test="${pro.progress == '初访'}">
                                                     <span class="label label-default pull-right">${pro.progress}</span>
@@ -192,7 +192,7 @@
                         <label>选择客户</label>
                         <select name="custid" class="form-control">
                             <c:forEach items="${customerList}" var="cust">
-                                <option value="${cust.id}">${cust.custname}</option>
+                                <option value="${cust.id}">${cust.contact}</option>
                             </c:forEach>
                         </select>
                     </div>

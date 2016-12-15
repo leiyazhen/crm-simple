@@ -66,22 +66,30 @@
 							<div class="panel-body">
 								<form class="form-inline" id="searchForm">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="客户姓名或联系人"
-											id="seaName">
+										<input type="text" class="form-control" placeholder="车牌号"
+											id="seaVehicleNO">
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="联系电话"
-											id="seaTel">
+										<input type="text" class="form-control" placeholder="出厂日期"
+											id="seaDate">
 									</div>
 									<div class="form-group">
-										<select id="seaState" class="form-control">
-											<option value="">客户状态</option>
-											<option value="新增">新增</option>
-											<option value="初访">初访</option>
-											<option value="意向">意向</option>
-											<option value="报价">报价</option>
-											<option value="成交">成交</option>
-											<option value="暂时搁置">暂时搁置</option>
+										<select id="seaType" class="form-control">
+											<option value="">车辆类型</option>
+											<option value="A1">大型客车</option>
+											<option value="A2">牵引车</option>
+											<option value="A3">公交车</option>
+											<option value="B1">中型客车</option>
+											<option value="B2">大型货车</option>
+											<option value="C1">小型汽车</option>
+											<option value="C2">小型自动挡汽车</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<select id="seaSales" class="form-control">
+											<option value="">在库状态</option>
+											<option value="0">已售</option>
+											<option value="1">未售</option>
 										</select>
 									</div>
 									<button type="button" class="btn btn-primary" id="searchBtn">搜索</button>
@@ -91,29 +99,31 @@
 
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-users"></i> 客户列表<a href="javascript:;"
+								<i class="fa fa-users"></i> 车辆信息<a href="javascript:;"
 									id="delCustomer" class="pull-right btn btn-success btn-xs"
 									style="margin-left: 15px;"> <i class="fa fa-plus"></i> 删除
-								</a> <a href="javascript:;" id="newCustomer"
+								</a> <a href="javascript:;" id="newVehilce"
 									class="pull-right btn btn-success btn-xs"> <i
 									class="fa fa-plus"></i> 新增
 								</a>
 							</div>
 							<div class="panel-body">
-								<table class="table" id="cust_table">
+								<table class="table" id="vehicle_table">
 									<thead>
 										<tr>
 											<th width="30"><input type="checkbox"></th>
 											<th>ID</th>
-											<th>客户名称</th>
-
-											<th>联系电话</th>
-											<th>当前进度</th>
-											<th>最近跟进</th>
+											<th>车牌号</th>
+											<th>车辆类型</th>
+											<th>品牌型号</th>
+											<th>行驶公里数</th>
+											<th>出厂日期</th>
+											<th>在库状态</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
+											<td></td>
 											<td></td>
 											<td></td>
 											<td></td>
@@ -137,7 +147,7 @@
 	</div>
 	<!-- /#wrapper -->
 
-	<div class="modal fade" id="newCustomer_Modal">
+	<div class="modal fade" id="newVehilce_Modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -146,42 +156,58 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h4 class="modal-title">
-						<i class="fa fa-plus"></i> 新增客户
+						<i class="fa fa-plus"></i> 新增车辆
 					</h4>
 				</div>
 				<div class="modal-body">
-					<form action="" id="newCustForm">
+					<form action="" id="newVehicleForm">
 						<!-- <div class="form-group">
 							<label>客户名称</label> <input type="text" class="form-control"
 								placeholder="" name="custname">
 						</div> -->
 						<div class="form-group">
-							<label>联系人</label> <input type="text" class="form-control"
-								placeholder="" name="contact">
+							<label>品牌型号</label> <input type="text" class="form-control"
+								placeholder="" name="productor">
 						</div>
 						<div class="form-group">
-							<label>联系电话</label> <input type="text" class="form-control"
-								placeholder="" name="tel">
+							<label>车牌号</label> <input type="text" class="form-control"
+								placeholder="" name="vehicleNO">
 						</div>
 						<div class="form-group">
-							<label>地址</label> <input type="text" class="form-control"
-								placeholder="" name="address">
-						</div>
-						<!-- <div class="form-group">
-							<label>电子邮件</label> <input type="text" class="form-control"
-								placeholder="" name="email">
-						</div> -->
-						<div class="form-group">
-							<label>微信</label> <input type="text" class="form-control"
-								placeholder="" name="wechar">
-						</div>
-						<div class="form-group">
-							<label>QQ</label> <input type="text" class="form-control"
-								placeholder="" name="qq">
+							<label>车辆类型</label> <select id="seaType" class="form-control">
+								<option value="">车辆类型</option>
+								<option value="A1">大型客车</option>
+								<option value="A2">牵引车</option>
+								<option value="A3">公交车</option>
+								<option value="B1">中型客车</option>
+								<option value="B2">大型货车</option>
+								<option value="C1">小型汽车</option>
+								<option value="C2">小型自动挡汽车</option>
+							</select>
 						</div>
 						<div class="form-group">
-							<label>备注</label> <input type="text" class="form-control"
-								placeholder="" name="mark">
+							<label>行驶公里数</label> <input type="text" class="form-control"
+								placeholder="" name="mileage">
+						</div>
+						<div class="form-group">
+							<label>发动机编号</label> <input type="text" class="form-control"
+								placeholder="" name="engineNO">
+						</div>
+						<div class="form-group">
+							<label>车架号</label> <input type="text" class="form-control"
+								placeholder="" name="vinNO">
+						</div>
+						<div class="form-group">
+							<label>行驶证编号</label> <input type="text" class="form-control"
+								placeholder="" name="lisenceid">
+						</div>
+						<div class="form-group">
+							<label>出厂日期</label> <input type="text" class="form-control"
+								placeholder="" name="producedDate">
+						</div>
+						<div class="form-group">
+							<label>描述</label> <input type="text" class="form-control"
+								placeholder="" name="comments">
 						</div>
 					</form>
 				</div>
@@ -216,7 +242,7 @@
 	<script>
 		$(function() {
 
-			var table = $("#cust_table")
+			var table = $("#vehicle_table")
 					.DataTable(
 							{
 								"processing" : true, //loding效果
@@ -226,12 +252,14 @@
 								"lengthMenu" : [10, 25, 50, 100],//每页显示数据条数菜单
 								"ordering" : false,
 								"ajax" : {
-									url : "/customer/customers.json", //获取数据的URL
+									url : "/vehicle/vehicles.json", //获取数据的URL
 									type : "get", //获取数据的方式
 									data : function(d) {
-										d.seaName = $("#seaName").val();
-										d.seaTel = $("#seaTel").val();
-										d.seaState = $("#seaState").val();
+										d.seaVehicleNO = $("#seaVehicleNO")
+												.val();
+										d.seaType = $("#seaType").val();
+										d.seaDate = $("#seaDate").val();
+										d.seaSales = $("#seaSales").val();
 									}
 								},
 								"columns" : [ //返回的JSON中的对象和列的对应关系
@@ -246,35 +274,32 @@
 										},
 										{
 											"data" : function(row) {
-												var result = "<a href='/customer/"+row.id+"'>"
-														+ row.contact + "</a>";
+												var result = "<a href='/vehicle/"+row.id+"'>"
+														+ row.vehicleNo
+														+ "</a>";
 												if (!row.userid) {
 													result += " <i class='fa fa-unlock text-muted'></i>";
 												}
 												return result;
 
 											},
-											"name" : "contact"
+											"name" : "vehicleNo"
+										}, {
+											"data" : "vehicleType",
+											"name" : "vehicleType"
 										},
-										/* {
-											"data" : function(row) {
-												var result = "<a href='/customer/"+row.id+"'>"
-														+ row.contact + "</a>";
-												if (!row.userid) {
-													result += " <i class='fa fa-unlock text-muted'></i>";
-												}
-												return result;
-											},
-											"name" : "contact"
-										},  */
+
 										{
-											"data" : "tel",
-											"name" : "tel"
+											"data" : "productor",
+											"name" : "productor"
 										}, {
-											"data" : "progress",
-											"name" : "progress"
+											"data" : "mileage",
+											"name" : "mileage"
 										}, {
-											"data" : "progresstime"
+											"data" : "produceddate"
+										}, {
+											"data" : "state",
+											"name" : "state"
 										}],
 								"columnDefs" : [ //具体列的定义
 								{
@@ -304,21 +329,24 @@
 			});
 
 			//保存新客户
-			$("#newCustomer").click(function() {
-				$("#newCustomer_Modal").modal("show");
+			$("#newVehilce").click(function() {
+				$("#newVehilce_Modal").modal("show");
 			});
 
 			$("#saveBtn").click(
 					function() {
-						$.post("/customer/new", $("#newCustForm").serialize())
-								.done(function(result) {
-									if (result == "success") {
-										$("#newCustForm")[0].reset();
-										$("#newCustomer_Modal").modal('hide');
-										table.ajax.reload();
-									}
-								}).fail(function() {
-									alert("添加新客户异常");
+						$
+								.post("/vehicle/new",
+										$("#newVehicleForm").serialize()).done(
+										function(result) {
+											if (result == "success") {
+												$("newVehicleForm")[0].reset();
+												$("#newVehilce_Modal").modal(
+														'hide');
+												table.ajax.reload();
+											}
+										}).fail(function() {
+									alert("添加车辆信息异常");
 								});
 					});
 

@@ -1,14 +1,18 @@
 package com.kaishengit.pojo;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.io.Serializable;
-
 public class Task implements Serializable {
 
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
     private String worktime;
     private String task;
     private Boolean done;

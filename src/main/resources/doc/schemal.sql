@@ -47,8 +47,8 @@ CREATE TABLE `t_customer` (
   `mark` varchar(200) DEFAULT NULL COMMENT '备注',
   `userid` int(11) DEFAULT NULL COMMENT '所属用户',
   `progress` varchar(45) DEFAULT NULL COMMENT '当前进度',
-  `progresstime` date DEFAULT NULL COMMENT '最后跟进时间',
-  `createtime` date DEFAULT NULL COMMENT '创建时间',
+  `progresstime` varchar(45) DEFAULT NULL COMMENT '最后跟进时间',
+  `createtime` varchar(45) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `fk_t_customer_t_user1_idx` (`userid`),
   CONSTRAINT `fk_t_customer_t_user1` FOREIGN KEY (`userid`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -178,22 +178,43 @@ CREATE TABLE `t_user_log` (
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
+DROP TABLE IF EXISTS `t_vehicle_info`;
 CREATE TABLE `t_vehicle_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `typeid` int(11) NOT NULL COMMENT 'vehicle type',
+   `userid` int(11) NOT NULL,
   `vehicleNO` varchar(100) DEFAULT NULL,
   `mileage` double DEFAULT NULL COMMENT 'miles',
-  `condition` varchar(100) DEFAULT NULL COMMENT 'vehcile condition',
+  `comments` varchar(100) DEFAULT NULL COMMENT 'vehcile condition',
   `engineNO` varchar(100) NOT NULL,
   `vinNO` varchar(100) NOT NULL,
-  `lisenceid` int(11) NOT NULL,
-  `produced_date` date NOT NULL,
+  `lisenceid` varchar(100) NOT NULL,
+  `produced_date` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL,
+  `prodcutor` varchar(100) DEFAULT NULL,
+  `vehicleType` varchar(100) DEFAULT NULL,
+  `createDate` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+   KEY `fk_t_vehicle_info_t_user1_idx` (`userid`),
+  CONSTRAINT `fk_t_vehicle_info_t_user1` FOREIGN KEY (`userid`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=MyISAM DEFAULT CHARSET=utf8
+
+--A1:大型客车（大型载客汽车）
+--A2:牵引车（重型中型全挂，半挂汽车）
+--A3:城市公交车（荷载10人以上的城市公交车）
+--B1:中型客车（中型载客汽车，含载10人以上19人以下的城市公交车）
+--B2：大型货车（重型中型载货汽车，大重中型专项作业车）
+--C1：小型汽车（小型微型载客汽车以及轻型微型载货汽车：轻小微型专项作业车）
+--C2：小型自动挡汽车（小型微型自动挡载客汽车以及轻型微型自动挡载货汽车）
+DROP TABLE IF EXISTS `c_vehicle_type`;
+CREATE TABLE `c_vehicle_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name`  varchar(100)  NOT NULL,
+  `code`  varchar(10)   NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8
 
-
+insert  into c_vehicle_type (name,code) values ('大型客车','A1'),('牵引车','A2'),('城市公交车','A3'),('中型客车','B1')
+,('大型货车','B2'),('小型汽车','C1'),('小型自动挡汽车','C2');
 CREATE TABLE `t_sales_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quotePrice` decimal(10,0) DEFAULT NULL,

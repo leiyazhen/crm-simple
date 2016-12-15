@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 public class ProgressFile implements Serializable {
 
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
     private String filename;
     private String path;
     private String createtime;

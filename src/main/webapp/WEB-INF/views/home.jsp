@@ -158,7 +158,7 @@
 										<li class="three-none"><a href="/jk/"></a></li>
 										<li>客户信息
 											<ul class="list-unstyled">
-												<li><a href="/websetup/"><i class="fa fa-gear"></i>客户录入</a>
+												<li><a href="/customer"><i class="fa fa-gear"></i>客户录入</a>
 												</li>
 												<li><a href="/xcrm/desktop/telnote/"><i
 														class="glyphicon glyphicon-tint"></i>信息查询</a></li>
